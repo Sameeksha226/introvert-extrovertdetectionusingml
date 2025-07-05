@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #ebcde2;
+      }
+      .form-view{
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color:rgb(240, 232, 247);
+        border-radius: 8px;
+      }
+      .heading{
+        text-align: center;
+        color: rgb(103, 10, 100);
+        font-size: 200%;
+        text-size-adjust: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 15vh;
+        font-weight: bold;
+      }
+      input{
+        width: 25%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .submit-view{
+        background-color: #0c5b73;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: medium;
+        align-items: center;
+        justify-content: center;
+      }
+      label{
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #304552;
+      }
+      .result-display {
+        text-align: center;
+        font-size: larger;
+        color: #026988;
+        margin-top: 20px;
+      }
+      option{
+        padding: 10px;
+        background-color: #f0f4f8;
+        color: #304552;
+      }
+    </style>
+    </head>
+    <body>
+        <h1 class="heading">Welcome</h1>
+        <form class="form-view" method="POST" action="/quiz">
+          <label for="time_spent_alone">1. How many hours per day do you usually spend alone?</label><br>
+          <input type="number" id="time_spent_alone" name="time_spent_alone" min="0" max="24"><br><br>
+
+          <label for="stage_fear">2. Do you experience stage fear?</label><br>
+            <select id="stage_fear" name="stage_fear">
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select><br><br>
+          <label for="social_event_attendance">3. How often do you attend social events (per month)?</label><br>
+          <input type="number" id="social_event_attendance" name="social_event_attendance" min="0"><br><br>
+
+          <label for="going_outside">4. How many days a week do you go outside for non-essential activities?</label><br>
+          <input type="number" id="going_outside" name="going_outside" min="0" max="7"><br><br>
+
+          <label for="drained_after_socializing">5. Do you feel drained after socializing?</label><br>
+            <select id="drained_after_socializing" name="drained_after_socializing">
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select><br><br>
+
+          <label for="friends_circle_size">6. Approximately how many close friends do you have?</label><br>
+          <input type="number" id="friends_circle_size" name="friends_circle_size" min="0"><br><br>
+
+          <label for="post_frequency">7. How frequently do you post on social media (posts per week)?</label><br>
+          <input type="number" id="post_frequency" name="post_frequency" min="0"><br><br>
+
+          <input class="submit-view" type="submit" value="Submit">
+        </form>
+        {% if result %}
+        <p class="result-display">{{ result }}</p>
+        {% endif %}
+
+    </body>
+</html>
